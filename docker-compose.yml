@@ -1,0 +1,15 @@
+nginx:
+        image: nginx
+
+        links:
+                - devpi
+
+        ports:
+                - "8435:80"
+
+        volumes:
+                - ${PWD}/nginx/conf.d:/etc/nginx/conf.d
+
+devpi:
+        build: .
+        command: --host 0.0.0.0 --restrict-modify root
