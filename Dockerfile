@@ -1,6 +1,7 @@
 FROM python:3
 
-RUN pip install devpi-server devpi-web devpi-lockdown && devpi-server --init
+ADD run.sh /
+RUN pip install devpi-client devpi-server devpi-web devpi-lockdown
 EXPOSE 3141
 
-ENTRYPOINT ["devpi-server"]
+ENTRYPOINT ["/run.sh"]
